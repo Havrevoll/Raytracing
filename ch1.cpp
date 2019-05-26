@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
@@ -7,14 +7,21 @@
 int main() 
 {
 
+	using namespace std;
 
 	int nx; //= 200;
 	int ny;// = 100;
-	std::cout << "nx = ";
-	std::cin >> nx;
-	std::cout << "ny = ";
-	std::cin >> ny;
+	cout << "nx = ";
+	cin >> nx;
+	cout << "ny = ";
+	cin >> ny;
 
+	char filnamn[30] = "bilete.png";
+	cout << "skriv filnamnet (inkl. png): ";
+        cin >> filnamn;	
+
+
+	cout << "filnamnet er " << filnamn << endl;
 
 	int n = 3;
 
@@ -34,11 +41,11 @@ int main()
 			data[  k +1] = ig;
 			data[  k +2] = ib;
 
-			std::cout << "j = " << j << ", i = " << i <<", k = " << k << std::endl; 
+			//std::cout << "j = " << j << ", i = " << i <<", k = " << k << std::endl; 
 		}
 	}
 	
-	stbi_write_png("bilete.png", nx,ny, n, data, 0);
+	stbi_write_png(filnamn, nx,ny, n, data, 0);
 
 
 
