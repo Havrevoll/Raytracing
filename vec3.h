@@ -62,6 +62,7 @@ class vec3
 		//vec3 unit(vec3 v);
 		float length();
 		float len() {return length(); }
+		float squared_length() { return e[0]*e[0]+e[1]*e[1]+e[2]*e[2]; }
 
 
 		//friend vec3 operator*(float n, const vec3 & a);
