@@ -158,7 +158,7 @@ float dot(const vec3 & v1, const vec3 & v2)
 
 vec3 cross(const vec3 & a, const vec3 & b)
 {
-	return vec3( (a.e[2] * b.e[3] - a.e[3] * b.e[2]), (a.e[3] * b.e[1] - a.e[1] * b.e[3]), (a.e[1] * b.e[2] - a.e[2] * b.e[1]));
+	return vec3( (a.e[1] * b.e[2] - a.e[2] * b.e[1]), (a.e[2] * b.e[0] - a.e[0] * b.e[2]), (a.e[0] * b.e[1] - a.e[1] * b.e[0]));
 }
 
 void vec3::make_unit_vector()
