@@ -1,26 +1,21 @@
 #include <iostream>
+#include "sphere.h"
+#include "hitablelist.h"
 #include <cstddef>
 #include <limits>
 #include <random>
-
-#include "sphere.h"
-#include "hitablelist.h"
 #include "camera.h"
+#include "material.h"
 
 // std::random_device rd;
 std::default_random_engine generator;//( rd() );
 std::uniform_real_distribution<float> distribution(0.0, 1.0);
 
-int ferd = 0;
 
 vec3 random_in_unit_sphere() {
 	vec3 p;
 	do {
 		p = 2.0*vec3(distribution(generator), distribution(generator), distribution(generator)) - vec3(1,1,1);
-/*		if (ferd< 100) {
-		       	std::cout << "# p = " << p << endl;
-		}
-*/
 	} while (p.squared_length() >= 1.0);
 	return p;
 }	
@@ -39,15 +34,14 @@ vec3 color(const ray& r, hitable *world) {
 }
 
 int main() {
-	int nx = 800;
-	int ny = 400;
+	int nx = 400;
+	int ny = 200;
 	int ns = 100;
 	std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
 	hitable *list[2];
-	list[0] = new sphere(vec3(0,0,-2), 0.5);
+	list[0] = new sphere(vec3(0,0,-1), 0.5);
 	list[1] = new sphere(vec3(0,-100.5,-1),100);
-	//list[2] = new sphere(vec3(0,1,-1), 0.5);
 	hitable *world = new hitable_list(list,2);
 	camera cam;
 
