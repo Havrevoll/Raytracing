@@ -1,6 +1,8 @@
 #ifndef LAMBERTIAN
 #define LAMBERTIAN
 
+vec3 random_in_unit_sphere();
+
 class lambertian : public material {
 	public:
 		lambertian(const vec3 & a ) : albedo(a) {}
