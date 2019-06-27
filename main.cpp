@@ -11,25 +11,9 @@
 #include "hitablelist.h"
 #include "camera.h"
 #include "material.h"
-#include "lambertian.h"
-#include "metal.h"
-
-// std::random_device rd;
-std::default_random_engine generator;//( rd() );
-std::uniform_real_distribution<float> distribution(0.0, 1.0);
 
 
-vec3 random_in_unit_sphere() {
-	vec3 p;
-	do {
-		p = 2.0*vec3(distribution(generator), distribution(generator), distribution(generator)) - vec3(1,1,1);
-	} while (p.squared_length() >= 1.0);
-	return p;
-}	
 
-vec3 reflect(const vec3 & v, const vec3 & n) {
-	return v - 2*dot(v,n)*n;
-}
 
 vec3 color(const ray& r, hitable *world, int depth) {
 	hit_record rec;
@@ -66,8 +50,8 @@ int main() {
 	hitable *list[4];
 	list[0] = new sphere(vec3(0,0,-1), 0.5, new lambertian(vec3(.8, .3, .3)));
 	list[1] = new sphere(vec3(0,-100.5,-1),100, new lambertian(vec3(.8, .8, .0)));
-	list[2] = new sphere(vec3(1,0,-1), .5, new metal(vec3(.8, .6, .2)));
-	list[3] = new sphere(vec3(-1,0,-1),.5, new metal(vec3(.8,.8,.8)));
+	list[2] = new sphere(vec3(1,0,-1), .5, new metal(vec3(.8, .6, .2), .3));
+	list[3] = new sphere(vec3(-1,0,-1),.5, new metal(vec3(.8,.8,.8), .6));
 	//list[2] = new sphere(vec3(0,1,-1), 0.5);
 	hitable *world = new hitable_list(list,4);
 	camera cam;
