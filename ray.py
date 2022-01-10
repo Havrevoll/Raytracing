@@ -1,17 +1,6 @@
 import numpy as np
 
 class Ray:
-    //     Point3D
-    // o;
-    // // origin
-    // Vector3D
-    // d;
-    // // direction
-    // Ray(void);
-    // // default constructor
-    // Ray(const Point3D& origin, const Vector3D& dir); // constructor
-    // Ray(const Ray& ray);
-    // // copy constructor
-    // Ray&
-    // // assignment operator
-    // operator= (const Ray& rhs);
+    def __init__(self, origin = np.zeros(3), dir = np.array([0.0, 0.0, 1.0])):
+        self.o = origin
+        self.d = dir
